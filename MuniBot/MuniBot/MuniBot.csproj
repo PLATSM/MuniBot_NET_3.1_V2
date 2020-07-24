@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Dialogs\LicenciaFuncionamiento\CrearLicenciaDialog.cs" />
+    <Compile Remove="Dialogs\LicenciaFuncionamiento\ListarEstablecimientoCategoriaDialog.cs" />
+    <Compile Remove="Dialogs\LicenciaFuncionamiento\ListarEstablecimientoClaseDialog.cs" />
+    <Compile Remove="Dialogs\LicenciaFuncionamiento\ListarEstablecimientoSubclaseDialog.cs" />
+    <Compile Remove="Dialogs\LicenciaFuncionamiento\ListarTipoLicenciaDialog.cs" />
+    <Compile Remove="Dialogs\LicenciaFuncionamiento\xx CrearLicenciaDialog.cs" />
+    <Compile Remove="Dialogs\LicenciaFuncionamiento\xx ListarEstablecimientoCategoriaDialog.cs" />
+    <Compile Remove="Dialogs\LicenciaFuncionamiento\xx ListarEstablecimientoClaseDialog.cs" />
+    <Compile Remove="Dialogs\LicenciaFuncionamiento\xx ListarEstablecimientoSubclaseDialog.cs" />
+    <Compile Remove="Dialogs\LicenciaFuncionamiento\xx ListarTipoLicenciaDialog.cs" />
+    <Compile Remove="EmptyBot.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AdaptiveCards" Version="1.2.4" />
+    <PackageReference Include="AdaptiveCards.Templating" Version="0.1.0-alpha1" />
+    <PackageReference Include="Microsoft.AdaptiveCards" Version="0.5.1" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.1" />
+    <PackageReference Include="Microsoft.Bot.Builder.AI.Luis" Version="4.9.3" />
+    <PackageReference Include="Microsoft.Bot.Builder.AI.QnA" Version="4.9.3" />
+    <PackageReference Include="Microsoft.Bot.Builder.Dialogs" Version="4.9.3" />
+    <PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="4.9.2" />
+    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+  </ItemGroup>
+
+    <ItemGroup>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Dialogs\ImpuestoAlcabala\" />
+      <Folder Include="Dialogs\ImpuestoVehicular\" />
+    </ItemGroup>
+
+</Project>

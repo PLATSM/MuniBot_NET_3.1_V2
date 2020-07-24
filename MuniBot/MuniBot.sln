@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MuniBot", "MuniBot\MuniBot.csproj", "{F4539FCA-F580-4278-8A66-56A6A5EADC3E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4539FCA-F580-4278-8A66-56A6A5EADC3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4539FCA-F580-4278-8A66-56A6A5EADC3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4539FCA-F580-4278-8A66-56A6A5EADC3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4539FCA-F580-4278-8A66-56A6A5EADC3E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {665C3040-548F-4A0D-B316-7DCF4B5CEE8D}
+	EndGlobalSection
+EndGlobal
