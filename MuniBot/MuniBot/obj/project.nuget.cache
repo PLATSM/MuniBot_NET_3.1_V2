@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dDDJLQdUSDOTQhdcS8kHnveGgCxJV049o10Nvt9dn9aUcGJBwAgYTbGHMks96ZChMpGSahZhYPGLkbnVO33haw==",
+  "dgSpecHash": "FQuKJ+/ud5ibL582ovpM7h/6b476xM6WaHux7YJ8NoWKKfR2vj4uYXDedVI8sNJqYbwHA7X10GOoTUFarXEBBw==",
   "success": true,
-  "projectFilePath": "D:\\UPC\\Proyecto Tesis\\MuniBot .NET 3.1\\MuniBot\\MuniBot\\MuniBot.csproj",
+  "projectFilePath": "D:\\UPC\\Proyecto Tesis\\MuniBot_NET_3.1_V2\\MuniBot\\MuniBot\\MuniBot.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ricardo\\.nuget\\packages\\adaptivecards\\1.2.4\\adaptivecards.1.2.4.nupkg.sha512",
     "C:\\Users\\Ricardo\\.nuget\\packages\\adaptivecards.templating\\0.1.0-alpha1\\adaptivecards.templating.0.1.0-alpha1.nupkg.sha512",

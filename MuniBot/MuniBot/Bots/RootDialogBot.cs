@@ -179,7 +179,7 @@ namespace MuniBot.Bots
                                 else
                                 {
                                     await Task.Delay(500);
-                                    await turnContext.SendActivityAsync(MenuBot.Buttons(0, ""), cancellationToken);
+                                    await turnContext.SendActivityAsync(MenuBot.Buttons(0, resultado.error_message), cancellationToken);
                                 }
                             }
                             break;

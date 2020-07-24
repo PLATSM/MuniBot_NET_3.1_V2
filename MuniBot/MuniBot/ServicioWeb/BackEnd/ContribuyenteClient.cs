@@ -166,7 +166,25 @@ namespace MuniBot.ServicioWeb.BackEnd
                 var result = responseTask.Result;
                 var readTask = result.Content.ReadAsAsync<Response<DataJsonDTO>>();
                 readTask.Wait();
-                response = readTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    response = readTask.Result;
+                }
+                else
+                {
+                    if ((int)result.StatusCode == 401)
+                    {
+                        response.error_number = (int)result.StatusCode;
+                        response.error_message = "Su sesión ha expirado, vuelva a iniciar sesión";
+                    }
+                    else
+                    {
+                        response.error_number = -1;
+                        response.error_message = "Sucedió un error, vuelva a intentarlo.";
+                    }
+                }
+
+                
 
             }
             return response;
