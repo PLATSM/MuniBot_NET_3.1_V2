@@ -8,10 +8,8 @@ namespace MuniBot.ServicioWeb.BackEnd
 {
     public class ContribuyenteClient
     {
-
         public ResponseQuery InsertAsync(ContribuyenteDTO contribuyente)
         {
-
             ResponseQuery responseQuery = new ResponseQuery();
 
             var json = JsonConvert.SerializeObject(contribuyente);
@@ -26,14 +24,28 @@ namespace MuniBot.ServicioWeb.BackEnd
                 var result = responseTask.Result;
                 var readTask = result.Content.ReadAsAsync<ResponseQuery>();
                 readTask.Wait();
-                responseQuery = readTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    responseQuery = readTask.Result;
+                }
+                else
+                {
+                    if ((int)result.StatusCode == 401)
+                    {
+                        responseQuery.error_number = (int)result.StatusCode;
+                        responseQuery.error_message = "Su sesión ha expirado, vuelva a iniciar sesión";
+                    }
+                    else
+                    {
+                        responseQuery.error_number = -1;
+                        responseQuery.error_message = "Sucedió un error, vuelva a intentarlo.";
+                    }
+                }
             }
             return responseQuery;
         }
-
         public ResponseQuery UpdatetAsync(ContribuyenteDTO contribuyente)
         {
-
             ResponseQuery responseQuery = new ResponseQuery();
 
             var json = JsonConvert.SerializeObject(contribuyente);
@@ -48,14 +60,28 @@ namespace MuniBot.ServicioWeb.BackEnd
                 var result = responseTask.Result;
                 var readTask = result.Content.ReadAsAsync<ResponseQuery>();
                 readTask.Wait();
-                responseQuery = readTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    responseQuery = readTask.Result;
+                }
+                else
+                {
+                    if ((int)result.StatusCode == 401)
+                    {
+                        responseQuery.error_number = (int)result.StatusCode;
+                        responseQuery.error_message = "Su sesión ha expirado, vuelva a iniciar sesión";
+                    }
+                    else
+                    {
+                        responseQuery.error_number = -1;
+                        responseQuery.error_message = "Sucedió un error, vuelva a intentarlo.";
+                    }
+                }
             }
             return responseQuery;
         }
-
         public ResponseQuery DeletetAsync(ContribuyenteDTO contribuyente)
         {
-
             ResponseQuery responseQuery = new ResponseQuery();
 
             var json = JsonConvert.SerializeObject(contribuyente);
@@ -70,11 +96,26 @@ namespace MuniBot.ServicioWeb.BackEnd
                 var result = responseTask.Result;
                 var readTask = result.Content.ReadAsAsync<ResponseQuery>();
                 readTask.Wait();
-                responseQuery = readTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    responseQuery = readTask.Result;
+                }
+                else
+                {
+                    if ((int)result.StatusCode == 401)
+                    {
+                        responseQuery.error_number = (int)result.StatusCode;
+                        responseQuery.error_message = "Su sesión ha expirado, vuelva a iniciar sesión";
+                    }
+                    else
+                    {
+                        responseQuery.error_number = -1;
+                        responseQuery.error_message = "Sucedió un error, vuelva a intentarlo.";
+                    }
+                }
             }
             return responseQuery;
         }
-
         public Response<ContribuyenteDTO> GetLoginAsync(int id_empresa, string co_documento_identidad, string nu_documento_identidad, string no_contrasena)
         {
             var response = new Response<ContribuyenteDTO>();
@@ -97,24 +138,37 @@ namespace MuniBot.ServicioWeb.BackEnd
                 responseTask.Wait();
 
                 var result = responseTask.Result;
+                var readTask = result.Content.ReadAsAsync<Response<ContribuyenteDTO>>();
+                readTask.Wait();
+
                 if (result.IsSuccessStatusCode)
                 {
-                    var readTask = result.Content.ReadAsAsync<Response<ContribuyenteDTO>>();
-                    readTask.Wait();
-
                     response = readTask.Result;
                 }
                 else
                 {
-                    var readTask = result.Content.ReadAsAsync<Response<ContribuyenteDTO>>();
-                    readTask.Wait();
+                    switch ((int)result.StatusCode)
+                    {
+                        case 401:
+                            response.error_number = (int)result.StatusCode;
+                            response.error_message = "Su sesión ha expirado, vuelva a iniciar sesión";
+                            break;
 
-                    response = readTask.Result;
+                        case 404:
+                            response = readTask.Result;
+                            response.error_number = (int)result.StatusCode;
+                            response.error_message = response.error_message;
+                            break;
+
+                        default:
+                            response.error_number = -1;
+                            response.error_message = "Sucedió un error, vuelva a intentarlo.";
+                            break;
+                    }
                 }
             }
             return response;
         }
-
         public Response<ContribuyenteDTO> GetAsync(int id_contribuyente, string no_token)
         {
             var response = new Response<ContribuyenteDTO>();
@@ -138,8 +192,31 @@ namespace MuniBot.ServicioWeb.BackEnd
                 var result = responseTask.Result;
                 var readTask = result.Content.ReadAsAsync<Response<ContribuyenteDTO>>();
                 readTask.Wait();
-                response = readTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    response = readTask.Result;
+                }
+                else
+                {
+                    switch ((int)result.StatusCode)
+                    {
+                        case 401:
+                            response.error_number = (int)result.StatusCode;
+                            response.error_message = "Su sesión ha expirado, vuelva a iniciar sesión";
+                            break;
 
+                        case 404:
+                            response = readTask.Result;
+                            response.error_number = (int)result.StatusCode;
+                            response.error_message = response.error_message;
+                            break;
+
+                        default:
+                            response.error_number = -1;
+                            response.error_message = "Sucedió un error, vuelva a intentarlo.";
+                            break;
+                    }
+                }
             }
             return response;
         }
@@ -172,24 +249,27 @@ namespace MuniBot.ServicioWeb.BackEnd
                 }
                 else
                 {
-                    if ((int)result.StatusCode == 401)
+                    switch ((int)result.StatusCode)
                     {
-                        response.error_number = (int)result.StatusCode;
-                        response.error_message = "Su sesión ha expirado, vuelva a iniciar sesión";
-                    }
-                    else
-                    {
-                        response.error_number = -1;
-                        response.error_message = "Sucedió un error, vuelva a intentarlo.";
+                        case 401:
+                            response.error_number = (int)result.StatusCode;
+                            response.error_message = "Su sesión ha expirado, vuelva a iniciar sesión";
+                            break;
+
+                        case 404:
+                            response = readTask.Result;
+                            response.error_number = (int)result.StatusCode;
+                            response.error_message = response.error_message;
+                            break;
+
+                        default:
+                            response.error_number = -1;
+                            response.error_message = "Sucedió un error, vuelva a intentarlo.";
+                            break;
                     }
                 }
-
-                
-
             }
             return response;
         }
-
-
     }
 }

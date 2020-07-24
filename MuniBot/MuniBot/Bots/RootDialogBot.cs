@@ -97,19 +97,26 @@ namespace MuniBot.Bots
                         case "Foto":
                             GoMainDialog = false;
 
-                            var result = contribuyenteClient.GetAsync(Globales.id_contribuyente, Globales.no_token);
-                            if (result.error_number == 0)
+                            if (Globales.OnSesion == false)
                             {
-                                var DataJson = JsonConvert.SerializeObject(result.Data);
-
-                                AdaptiveCardList adaptiveCardLicencia = new AdaptiveCardList();
-                                var ContribuyenteCard = adaptiveCardLicencia.CreateAttachment(8, DataJson);
-                                await turnContext.SendActivityAsync(MessageFactory.Attachment(ContribuyenteCard), cancellationToken);
-                                await turnContext.SendActivityAsync(MenuBot.Buttons(0, ""), cancellationToken);
+                                await turnContext.SendActivityAsync(MenuBot.Buttons(0, $"Debe **Iniciar Sesión** para mostrar la {activity.Text}"), cancellationToken);
                             }
                             else
                             {
-                                await turnContext.SendActivityAsync(MenuBot.Buttons(0, ""), cancellationToken);
+                                var result = contribuyenteClient.GetAsync(Globales.id_contribuyente, Globales.no_token);
+                                if (result.error_number == 0)
+                                {
+                                    var DataJson = JsonConvert.SerializeObject(result.Data);
+
+                                    AdaptiveCardList adaptiveCardLicencia = new AdaptiveCardList();
+                                    var ContribuyenteCard = adaptiveCardLicencia.CreateAttachment(8, DataJson);
+                                    await turnContext.SendActivityAsync(MessageFactory.Attachment(ContribuyenteCard), cancellationToken);
+                                    await turnContext.SendActivityAsync(MenuBot.Buttons(0, ""), cancellationToken);
+                                }
+                                else
+                                {
+                                    await turnContext.SendActivityAsync(MenuBot.Buttons(0, ""), cancellationToken);
+                                }
                             }
                             break;
 
@@ -147,10 +154,9 @@ namespace MuniBot.Bots
                             break;
 
                         case "Nuevo Trámite Licencia de Funcionamiento":
-                            GoMainDialog = false;
-
                             if (Globales.OnSesion == false)
                             {
+                                GoMainDialog = false;
                                 await turnContext.SendActivityAsync(MenuBot.Buttons(0, $"Debe **Iniciar Sesión** para realizar {activity.Text}"), cancellationToken);
                             }
                             break;

@@ -357,7 +357,7 @@ namespace MuniBot.Dialogs.LicenciaFuncionamiento
             else
             {
                 await Task.Delay(500);
-                await stepContext.Context.SendActivityAsync(MessageFactory.Text("Sucedió un error inesperado, elija otra opción"), cancellationToken);
+                await stepContext.Context.SendActivityAsync(MessageFactory.Text(result.error_message), cancellationToken);
                 return await stepContext.EndDialogAsync(cancellationToken: cancellationToken);
             }
         }

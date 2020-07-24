@@ -143,7 +143,6 @@ D:\UPC\Proyecto Tesis\MuniBot_NET_3.1_V2\MuniBot\MuniBot\bin\Debug\netcoreapp3.1
 D:\UPC\Proyecto Tesis\MuniBot_NET_3.1_V2\MuniBot\MuniBot\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
 D:\UPC\Proyecto Tesis\MuniBot_NET_3.1_V2\MuniBot\MuniBot\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netstandard1.3\System.Security.Cryptography.ProtectedData.dll
 D:\UPC\Proyecto Tesis\MuniBot_NET_3.1_V2\MuniBot\MuniBot\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard1.3\System.Security.Cryptography.ProtectedData.dll
-D:\UPC\Proyecto Tesis\MuniBot_NET_3.1_V2\MuniBot\MuniBot\obj\Debug\netcoreapp3.1\MuniBot.csprojAssemblyReference.cache
 D:\UPC\Proyecto Tesis\MuniBot_NET_3.1_V2\MuniBot\MuniBot\obj\Debug\netcoreapp3.1\MuniBot.AssemblyInfoInputs.cache
 D:\UPC\Proyecto Tesis\MuniBot_NET_3.1_V2\MuniBot\MuniBot\obj\Debug\netcoreapp3.1\MuniBot.AssemblyInfo.cs
 D:\UPC\Proyecto Tesis\MuniBot_NET_3.1_V2\MuniBot\MuniBot\obj\Debug\netcoreapp3.1\MuniBot.csproj.CoreCompileInputs.cache
