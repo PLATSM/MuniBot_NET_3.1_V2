@@ -313,6 +313,7 @@ namespace MuniBot.Dialogs.LicenciaFuncionamiento
         private async Task<DialogTurnResult> SetConfirmarDatos(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             stepContext.Values["nu_area"] = Convert.ToString(stepContext.Result);
+            stepContext.Values["no_area"] = Convert.ToString(stepContext.Result);
 
             // Obtiene la información del contribuyente
             ContribuyenteClient contribuyenteClient = new ContribuyenteClient();

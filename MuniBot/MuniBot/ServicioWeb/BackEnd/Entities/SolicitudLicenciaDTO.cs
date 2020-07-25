@@ -27,9 +27,9 @@ namespace MuniBot.ServicioWeb.BackEnd.Entities
 		public string fe_proceso_ini { get; set; }
 		public string fe_proceso_fin { get; set; }
 		public string no_tipo_persona { get; set; }
-		public string no_clase { get; set; }
-		public string no_subclase { get; set; }
-		public string no_categoria { get; set; }
+		public string no_establecimiento_clase { get; set; }
+		public string no_establecimiento_subclase { get; set; }
+		public string no_establecimiento_categoria { get; set; }
 		public string no_tipo_licencia { get; set; }
 		public string no_estado { get; set; }
 		public string no_contribuyente { get; set; }
@@ -44,6 +44,7 @@ namespace MuniBot.ServicioWeb.BackEnd.Entities
 		public string nu_telefono { get; set; }
 		public string no_correo_electronico { get; set; }
 		public string no_autorizador { get; set; }
+		public string no_area { get; set; }
 
 	}
 }

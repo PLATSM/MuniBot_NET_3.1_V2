@@ -471,6 +471,39 @@ namespace MuniBot.Bots
                                 }
                             }
                             break;
+
+                        case "ConsultarIdSolicitudLicencia":
+                            GoMainDialog = false;
+
+                            if(string.IsNullOrEmpty(InfoCard.GetValue("txtNumeroSolicitud").ToString()))
+                            {
+                                await turnContext.SendActivityAsync(MenuBot.Buttons(0, "Debe ingresar un número de Solicitud."), cancellationToken);
+                            }
+                            else
+                            {
+                                SolicitudLicenciaDTO solicitudLicenciaDTO = new SolicitudLicenciaDTO();
+                                solicitudLicenciaDTO.id_solicitud_licencia = 0;
+                                solicitudLicenciaDTO.id_contribuyente = Globales.id_contribuyente;
+                                solicitudLicenciaDTO.nu_solicitud_licencia = InfoCard.GetValue("txtNumeroSolicitud").ToString();
+
+                                SolicitudLicenciaClient solicitudLicenciaClient = new SolicitudLicenciaClient();
+                                var result = solicitudLicenciaClient.GetAsync(solicitudLicenciaDTO);
+
+                                if (result.error_number == 0)
+                                {
+                                    var dataJson = JsonConvert.SerializeObject(result.Data);
+                                    AdaptiveCardList adaptiveCardLicencia = new AdaptiveCardList();
+                                    var LicenciaCard = adaptiveCardLicencia.CreateAttachment(6, dataJson);
+                                    await turnContext.SendActivityAsync(MessageFactory.Attachment(LicenciaCard), cancellationToken);
+
+                                    await Task.Delay(500);
+                                    await turnContext.SendActivityAsync(MenuBot.Buttons(0, ""), cancellationToken);
+                                }
+                                else
+                                    await turnContext.SendActivityAsync(MenuBot.Buttons(0, $"{result.error_message}"), cancellationToken);
+                            }
+                            break;
+
                     }
                 }
             }

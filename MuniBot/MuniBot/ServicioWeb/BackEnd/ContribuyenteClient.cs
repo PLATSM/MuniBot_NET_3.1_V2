@@ -18,6 +18,7 @@ namespace MuniBot.ServicioWeb.BackEnd
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:4020/api/");
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Globales.no_token);
                 var responseTask = client.PostAsync("Contribuyente/InsertAsync", data);
                 responseTask.Wait();
 
@@ -54,6 +55,7 @@ namespace MuniBot.ServicioWeb.BackEnd
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:4020/api/");
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Globales.no_token);
                 var responseTask = client.PutAsync("Contribuyente/UpdateAsync", data);
                 responseTask.Wait();
 
@@ -90,6 +92,7 @@ namespace MuniBot.ServicioWeb.BackEnd
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:4020/api/");
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Globales.no_token);
                 var responseTask = client.PutAsync("Contribuyente/DeleteAsync", data);
                 responseTask.Wait();
 
@@ -125,7 +128,8 @@ namespace MuniBot.ServicioWeb.BackEnd
                 id_empresa = id_empresa,
                 co_documento_identidad = co_documento_identidad,
                 nu_documento_identidad = nu_documento_identidad,
-                no_contrasena = no_contrasena
+                no_contrasena = no_contrasena,
+                no_token = Globales.no_token
             };
 
             var json = JsonConvert.SerializeObject(contribuyente);
@@ -134,6 +138,7 @@ namespace MuniBot.ServicioWeb.BackEnd
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:4020/api/");
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Globales.no_token);
                 var responseTask = client.PostAsync("Contribuyente/GetLoginAsync", data);
                 responseTask.Wait();
 
@@ -185,7 +190,7 @@ namespace MuniBot.ServicioWeb.BackEnd
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:4020/api/");
-                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + contribuyente.no_token);
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Globales.no_token);
                 var responseTask = client.PostAsync("Contribuyente/GetAsync", data);
                 responseTask.Wait();
 
@@ -236,7 +241,7 @@ namespace MuniBot.ServicioWeb.BackEnd
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri("http://localhost:4020/api/");
-                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + contribuyente.no_token);
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Globales.no_token);
                 var responseTask = client.PostAsync("Contribuyente/GetJsonAsync", data);
                 responseTask.Wait();
 
